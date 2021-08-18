@@ -1,0 +1,8 @@
+{
+  "name": "apollo-test",
+  "private": true,
+  "workspaces": [
+    "app/*",
+    "configs/*"
+  ]
+}

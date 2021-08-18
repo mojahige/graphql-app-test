@@ -1,0 +1,10 @@
+{
+  "name": "@apollo-test/prettier-config",
+  "version": "0.1.0",
+  "private": true,
+  "author": "mojahige",
+  "main": "index.js",
+  "devDependencies": {
+    "@apollo-test/eslint-config": "^0.1.0"
+  }
+}

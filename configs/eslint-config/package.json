@@ -1,0 +1,20 @@
+{
+  "name": "@apollo-test/eslint-config",
+  "version": "0.1.0",
+  "private": true,
+  "author": "mojahige",
+  "main": "index.js",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "@apollo-test/prettier-config": "^0.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "^4.3.5"
+  }
+}
