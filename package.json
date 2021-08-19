@@ -2,7 +2,7 @@
   "name": "apollo-test",
   "private": true,
   "workspaces": [
-    "app/*",
+    "apps/*",
     "configs/*"
   ]
 }
