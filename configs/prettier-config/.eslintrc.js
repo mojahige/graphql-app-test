@@ -1,5 +1,5 @@
 module.exports = {
-  extends: '@apollo-test/eslint-config',
+  extends: '@graphql-app-test/eslint-config',
   env: {
     node: true,
   },

@@ -1,1 +1,1 @@
-@apollo-test/eslint
+@graphql-app-test/eslint

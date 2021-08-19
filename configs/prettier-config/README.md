@@ -1,1 +1,1 @@
-@apollo-test/formatter
+@graphql-app-test/formatter

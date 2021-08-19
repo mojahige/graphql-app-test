@@ -1,5 +1,5 @@
 {
-  "name": "@apollo-test/eslint-config",
+  "name": "@graphql-app-test/eslint-config",
   "version": "0.1.0",
   "private": true,
   "author": "mojahige",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "prettier": "^2.3.2",
-    "@apollo-test/prettier-config": "^0.1.0"
+    "@graphql-app-test/prettier-config": "^0.1.0"
   },
   "peerDependencies": {
     "typescript": "^4.3.5"

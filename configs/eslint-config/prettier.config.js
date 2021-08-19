@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('@apollo-test/prettier-config'),
+  ...require('@graphql-app-test/prettier-config'),
 };
