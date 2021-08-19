@@ -4,6 +4,9 @@
   "private": true,
   "author": "mojahige",
   "main": "index.js",
+  "dependencies": {
+    "prettier": "^2.3.2"
+  },
   "devDependencies": {
     "@graphql-app-test/eslint-config": "^0.1.0"
   }
