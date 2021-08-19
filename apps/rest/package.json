@@ -2,5 +2,29 @@
   "name": "@graphql-app-test/rest",
   "version": "0.1.0",
   "private": true,
-  "author": "mojahige"
+  "author": "mojahige",
+  "scripts": {
+    "start": "tsnd src/index.ts",
+    "fix": "yarn eslint:fix && yarn prettier:fix",
+    "check": "yarn eslint:check && yarn prettier:check && yarn check:type",
+    "check:type": "tsc --noEmit",
+    "prettier:check": "prettier --check './src/**/*.{ts,js}'",
+    "prettier:fix": "prettier --write './src/**/*.{ts,js}'",
+    "eslint:check": "eslint './src/**/*.{ts,tsx,js}'",
+    "eslint:fix": "eslint --fix './src/**/*.{ts,tsx,js}'"
+  },
+  "dependencies": {
+    "fastify": "^3.20.2",
+    "fastify-plugin": "^3.0.0",
+    "make-promises-safe": "^5.1.0",
+    "node-json-db": "^1.3.0"
+  },
+  "devDependencies": {
+    "@graphql-app-test/eslint-config": "^0.1.0",
+    "@graphql-app-test/prettier-config": "^0.1.0",
+    "@types/node": "^16.6.2",
+    "pino-pretty": "^5.1.3",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
 }
