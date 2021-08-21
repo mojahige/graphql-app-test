@@ -56,4 +56,18 @@ export async function user(): Promise<void> {
       })
     );
   });
+
+  server.delete<{
+    Params: UserIDParam;
+  }>('/user/:id', (request, reply) => {
+    const { id } = request.params;
+    const userDataIndex = DB.getIndex({
+      path: '/user',
+      value: Number(id),
+    });
+
+    DB.delete(`/user[${userDataIndex}]`);
+
+    reply.code(200).send(result({}));
+  });
 }

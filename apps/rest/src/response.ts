@@ -1,13 +1,13 @@
-import type { ResponseResultOptions, ResponseResults } from './types';
+import type { ResultOptions, ResponseResults } from './types';
 
 export function result({
+  status = true,
   statusCode = 200,
   data = null,
-  status = true,
-}: ResponseResultOptions): ResponseResults {
+}: ResultOptions): ResponseResults {
   return {
-    statusCode,
-    data,
-    status,
+    status: status,
+    statusCode: statusCode,
+    data: data,
   };
 }
