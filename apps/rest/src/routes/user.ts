@@ -1,24 +1,61 @@
 import { server } from '../server';
-import { db } from '../db';
+import { DB } from '../db';
+import { result } from '../response';
 import type { Users, UserModel } from '../models/user';
+import type { RequestBody } from '../types';
 
-type UserIDParam = Pick<UserModel, 'id'>
+interface UserIDParam {
+  id: string;
+}
+
+type UpdateUserBody = RequestBody<Partial<Omit<UserModel, 'id'>>>;
 
 export async function user(): Promise<void> {
   server.get('/user', async (_, reply) => {
-    const allUserData = db.getData('/user') as Users
+    const allUserData = DB.getData('/user') as Users;
 
-    reply.send(allUserData);
+    reply.code(200).send(
+      result({
+        data: allUserData,
+      })
+    );
   });
 
   server.get<{
-    Params: UserIDParam
+    Params: UserIDParam;
   }>('/user/:id', (request, reply) => {
     const { id } = request.params;
-    const allUserData = db.getData('/user') as Users
+    const allUserData = DB.getData('/user') as Users;
 
-    reply.send(
-      allUserData.find((user) => user.id === Number(id)) ?? {}
-    )
-  })
+    reply.code(200).send(
+      result({
+        data: allUserData.find((user) => user.id === Number(id)) ?? {},
+      })
+    );
+  });
+
+  server.patch<{
+    Params: UserIDParam;
+    Body: UpdateUserBody;
+  }>('/user/:id', (request, reply) => {
+    const { id } = request.params;
+    const { data } = request.body;
+    const userDataIndex = DB.getIndex({
+      path: '/user',
+      value: Number(id),
+    });
+    const userData = DB.getData<UserModel>(`/user[${userDataIndex}]`);
+    const updatedData = DB.setData({
+      path: `/user[${userDataIndex}]`,
+      value: { ...userData, ...data },
+    });
+
+    DB.save();
+
+    reply.code(200).send(
+      result({
+        data: updatedData,
+      })
+    );
+  });
 }
