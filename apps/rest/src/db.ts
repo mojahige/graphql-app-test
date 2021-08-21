@@ -59,6 +59,16 @@ class DBController {
   }
 
   /**
+   * Delete the data
+   *
+   * @param path path leading to the data
+   */
+  public delete(path: string) {
+    this.db.delete(path);
+    this.save();
+  }
+
+  /**
    * Manually save the database By default you can't save the database if it's not loaded
    *
    * @param force - Force the save of the database
