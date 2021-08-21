@@ -5,6 +5,7 @@
   "author": "mojahige",
   "scripts": {
     "start": "tsnd src/index.ts",
+    "dev": "tsnd src/index.ts",
     "fix": "yarn eslint:fix && yarn prettier:fix",
     "check": "yarn eslint:check && yarn prettier:check && yarn check:type",
     "check:type": "tsc --noEmit",
