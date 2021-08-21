@@ -9,6 +9,7 @@ interface UserIDParam {
 }
 
 type UpdateUserBody = RequestBody<Partial<Omit<UserModel, 'id'>>>;
+type CreateUserBody = UpdateUserBody;
 
 export async function user(): Promise<void> {
   server.get('/user', async (_, reply) => {
@@ -53,6 +54,23 @@ export async function user(): Promise<void> {
     reply.code(200).send(
       result({
         data: updatedData,
+      })
+    );
+  });
+
+  server.post<{
+    Body: CreateUserBody;
+  }>('/user', (request, reply) => {
+    const { data } = request.body;
+    const dbCount = DB.getCount('/user');
+    const setData = DB.setData({
+      path: `/user[${dbCount}]`,
+      value: { ...{ id: `${dbCount + 1}`, teamId: null }, ...data },
+    });
+
+    reply.code(200).send(
+      result({
+        data: setData,
       })
     );
   });

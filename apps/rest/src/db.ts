@@ -25,10 +25,19 @@ class DBController {
     path: string;
     value: unknown;
   }): Data {
-    this.db.push(path, value);
+    this.db.push(path, value, true);
     this.save();
 
     return this.getData(path);
+  }
+
+  /**
+   * Returns the number of element which constitutes the array
+   *
+   * @param path
+   */
+  public getCount(path: string) {
+    return this.db.count(path);
   }
 
   /**
@@ -76,6 +85,7 @@ class DBController {
    */
   public save(force = false) {
     this.db.save(force);
+    this.db.reload();
   }
 
   /**
