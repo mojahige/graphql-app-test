@@ -5,15 +5,20 @@
   "author": "mojahige",
   "scripts": {
     "dev": "tsnd src/index.ts",
-    "start": "tsnd src/index.ts"
+    "start": "tsnd src/index.ts",
+    "codegen": "graphql-codegen --config ./codegen.yml"
   },
   "dependencies": {
+    "apollo-datasource-rest": "^3.1.1",
     "apollo-server": "^3.1.2",
     "graphql": "^15.5.1"
   },
   "devDependencies": {
     "@graphql-app-test/eslint-config": "^0.1.0",
     "@graphql-app-test/prettier-config": "^0.1.0",
+    "@graphql-codegen/cli": "^2.1.1",
+    "@graphql-codegen/typescript": "^2.1.0",
+    "@graphql-codegen/typescript-resolvers": "^2.1.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"
   }

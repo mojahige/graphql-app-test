@@ -1,0 +1,18 @@
+type User {
+  id: ID!
+  name: String!
+  email: String
+  teamId: Int
+}
+
+type Team {
+  id: ID!
+  name: String!
+  description: String!
+  country: String!
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User!
+}

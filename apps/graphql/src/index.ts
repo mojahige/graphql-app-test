@@ -1,42 +1,22 @@
-import { ApolloServer, gql } from 'apollo-server';
+import fs from 'fs';
+import path from 'path';
+import { ApolloServer } from 'apollo-server';
+import { resolvers } from './resolvers';
+import { UserAPI } from './dataSources/user';
 
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
+const typeDefs = fs
+  .readFileSync(path.join(__dirname, '../schemata/schema.graphql'))
+  .toString();
 
-const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
-  }
-
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
-  }
-`;
-
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+function dataSources() {
+  return {
+    userAPI: new UserAPI(),
+  };
+}
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, dataSources, resolvers });
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {

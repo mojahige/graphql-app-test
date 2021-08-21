@@ -1,0 +1,9 @@
+schema: ./schemata/schema.graphql
+documents:
+  - ./schemata/queries/*.graphql
+  - ./schemata/mutations/*.graphql
+generates:
+  ./src/lib/generated/resolvers.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
