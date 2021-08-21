@@ -1,8 +1,8 @@
 export interface UserModel {
   id: number;
   name: string;
-  nickname: string;
   email: string;
+  teamId: number | null;
 }
 
-export type Users = Array<UserModel>
+export type Users = Array<UserModel>;
