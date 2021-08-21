@@ -50,8 +50,6 @@ export async function user(): Promise<void> {
       value: { ...userData, ...data },
     });
 
-    DB.save();
-
     reply.code(200).send(
       result({
         data: updatedData,

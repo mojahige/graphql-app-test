@@ -26,6 +26,7 @@ class DBController {
     value: unknown;
   }): Data {
     this.db.push(path, value);
+    this.save();
 
     return this.getData(path);
   }
