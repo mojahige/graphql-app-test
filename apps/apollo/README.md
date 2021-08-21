@@ -1,1 +1,0 @@
-@graphql-app-test/apollo
