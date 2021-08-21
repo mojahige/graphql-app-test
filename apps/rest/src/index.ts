@@ -1,8 +1,10 @@
 import 'make-promises-safe';
 import { server } from './server';
 import { user } from './routes/user';
+import { team } from './routes/team';
 
 server.register(user);
+server.register(team);
 
 server.get('/', async (_request, _reply) => {
   return { hello: 'world' };
