@@ -3,6 +3,7 @@ import path from 'path';
 import { ApolloServer } from 'apollo-server';
 import { resolvers } from './resolvers';
 import { UserAPI } from './dataSources/user';
+import { TeamAPI } from './dataSources/team';
 
 const typeDefs = fs
   .readFileSync(path.join(__dirname, '../schemata/schema.graphql'))
@@ -11,6 +12,7 @@ const typeDefs = fs
 function dataSources() {
   return {
     userAPI: new UserAPI(),
+    teamAPI: new TeamAPI(),
   };
 }
 

@@ -3,6 +3,11 @@ query user($id: ID!) {
     id
     name
     email
-    teamId
+    team {
+      id
+      name
+      description
+      country
+    }
   }
 }

@@ -3,6 +3,11 @@ query users {
     id
     name
     email
-    teamId
+    team {
+      id
+      name
+      description
+      country
+    }
   }
 }

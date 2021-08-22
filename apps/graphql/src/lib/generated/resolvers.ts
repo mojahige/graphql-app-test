@@ -17,10 +17,17 @@ export type Query = {
   __typename?: 'Query';
   users: Array<User>;
   user: User;
+  teams: Array<Team>;
+  team: Team;
 };
 
 
 export type QueryUserArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryTeamArgs = {
   id: Scalars['ID'];
 };
 
@@ -37,7 +44,8 @@ export type User = {
   id: Scalars['ID'];
   name: Scalars['String'];
   email?: Maybe<Scalars['String']>;
-  teamId?: Maybe<Scalars['Int']>;
+  teamId?: Maybe<Scalars['ID']>;
+  team?: Maybe<Team>;
 };
 
 
@@ -114,7 +122,6 @@ export type ResolversTypes = {
   Team: ResolverTypeWrapper<Team>;
   String: ResolverTypeWrapper<Scalars['String']>;
   User: ResolverTypeWrapper<User>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
@@ -125,13 +132,14 @@ export type ResolversParentTypes = {
   Team: Team;
   String: Scalars['String'];
   User: User;
-  Int: Scalars['Int'];
   Boolean: Scalars['Boolean'];
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
   user?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<QueryUserArgs, 'id'>>;
+  teams?: Resolver<Array<ResolversTypes['Team']>, ParentType, ContextType>;
+  team?: Resolver<ResolversTypes['Team'], ParentType, ContextType, RequireFields<QueryTeamArgs, 'id'>>;
 };
 
 export type TeamResolvers<ContextType = any, ParentType extends ResolversParentTypes['Team'] = ResolversParentTypes['Team']> = {
@@ -146,7 +154,8 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  teamId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  teamId?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  team?: Resolver<Maybe<ResolversTypes['Team']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

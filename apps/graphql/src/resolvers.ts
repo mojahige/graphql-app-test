@@ -1,9 +1,15 @@
-import { Resolvers, QueryResolvers } from './lib/generated/resolvers';
+import {
+  Resolvers,
+  QueryResolvers,
+  UserResolvers,
+} from './lib/generated/resolvers';
 import { UserAPI } from './dataSources/user';
+import { TeamAPI } from './dataSources/team';
 
 interface ContextType {
   dataSources: {
     userAPI: UserAPI;
+    teamAPI: TeamAPI;
   };
 }
 
@@ -16,6 +22,13 @@ const Query: QueryResolvers<ContextType> = {
   },
 };
 
+const User: UserResolvers<ContextType> = {
+  team({ teamId }, _args, { dataSources }, _info) {
+    return teamId ? dataSources.teamAPI.getTeam(teamId) : null;
+  },
+};
+
 export const resolvers: Resolvers = {
   Query,
+  User,
 };
