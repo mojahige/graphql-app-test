@@ -4,7 +4,7 @@
   "private": true,
   "author": "mojahige",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 1234",
     "build": "next build",
     "start": "next start",
     "fix": "next lint"
