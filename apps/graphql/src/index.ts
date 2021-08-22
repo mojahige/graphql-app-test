@@ -6,7 +6,7 @@ import { UserAPI } from './dataSources/user';
 import { TeamAPI } from './dataSources/team';
 
 const typeDefs = fs
-  .readFileSync(path.join(__dirname, '../schemata/schema.graphql'))
+  .readFileSync(path.join(__dirname, '../schemas/schema.graphql'))
   .toString();
 
 function dataSources() {
