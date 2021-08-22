@@ -1,6 +1,13 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import Head from 'next/head';
-import { Heading, Text } from '@chakra-ui/react';
+import {
+  Heading,
+  Center,
+  Box,
+  UnorderedList,
+  ListItem,
+} from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   return (
@@ -11,10 +18,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Heading>Hello world</Heading>
-      <Text color="orange.600" fontWeight={700}>
-        こんにちは
-      </Text>
+      <Center width="100%" minH="100%">
+        <Box width="fit-content">
+          <Heading>🪄 Sample App</Heading>
+          <UnorderedList marginTop={8}>
+            <ListItem>
+              <Link href="/user">👬 User</Link>
+            </ListItem>
+          </UnorderedList>
+        </Box>
+      </Center>
     </>
   );
 };
