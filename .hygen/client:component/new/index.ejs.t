@@ -1,5 +1,5 @@
 ---
-to: apps/client/components/<%= Name %>/index.ts
+to: apps/client/components/<%= name %>/index.ts
 ---
 
-export * from './<%= Name %>';
+export * from './<%= name %>';

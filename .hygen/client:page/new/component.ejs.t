@@ -1,11 +1,11 @@
 ---
-to: apps/client/pages/<%= Name %>.tsx
+to: apps/client/pages/<%= name.toLowerCase() %>.tsx
 ---
 
 import type { NextPage } from 'next';
 
-export const <%= Name %>: NextPage = () => {
-  return <p><%= Name %></p>;
+export const <%= name %>: NextPage = () => {
+  return <p><%= name %></p>;
 };
 
-export default <%= Name %>;
+export default <%= name %>;

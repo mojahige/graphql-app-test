@@ -1,7 +1,7 @@
 ---
-to: apps/client/components/<%= Name %>/<%= Name %>.tsx
+to: apps/client/components/<%= name %>/<%= name %>.tsx
 ---
 
-export const <%= Name %> = () => {
-  return <p><%= Name %></p>;
+export const <%= name %> = () => {
+  return <p><%= name %></p>;
 };
