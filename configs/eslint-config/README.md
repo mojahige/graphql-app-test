@@ -1,1 +1,1 @@
-@graphql-app-test/eslint
+# @graphql-app-test/eslint
