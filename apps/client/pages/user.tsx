@@ -2,6 +2,8 @@ import { ssrExchange, dedupExchange, cacheExchange, fetchExchange } from 'urql';
 import { withUrqlClient, initUrqlClient } from 'next-urql';
 import { useUsersQuery, UsersDocument } from '../lib/generated/client';
 import { BASE_URL } from '../client';
+import { BaseLayout } from '../layouts/BaseLayout';
+import { Box, Heading, SimpleGrid, Text, Flex } from '@chakra-ui/react';
 import type { NextPage, GetServerSideProps } from 'next';
 import type { Query } from '../lib/generated/client';
 
@@ -12,13 +14,43 @@ interface Props {
 
 export const User: NextPage<Props> = (props) => {
   return (
-    <>
-      <ul>
-        {props.data?.users.map((user: any) => {
-          return <li key={user.id}>{user.name}</li>;
+    <BaseLayout>
+      <SimpleGrid
+        columns={{
+          base: 1,
+          sm: 2,
+          md: 4,
+        }}
+        spacing={{
+          base: 4,
+          md: 6,
+        }}
+      >
+        {props.data?.users.map((user) => {
+          return (
+            <Box
+              as="section"
+              key={user.id}
+              borderWidth="1px"
+              borderRadius="lg"
+              padding={4}
+            >
+              <Heading as="h1" size="md">
+                {user.name}
+              </Heading>
+              <Box marginTop={2}>
+                <Flex gridGap="8px">
+                  <Box as="div" aria-label="Email" flexShrink={0}>
+                    📧:
+                  </Box>
+                  <Text overflowWrap="anywhere">{user.email}</Text>
+                </Flex>
+              </Box>
+            </Box>
+          );
         })}
-      </ul>
-    </>
+      </SimpleGrid>
+    </BaseLayout>
   );
 };
 
