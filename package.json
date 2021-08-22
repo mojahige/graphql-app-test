@@ -1,6 +1,13 @@
 {
   "name": "graphql-app-test",
   "private": true,
+  "author": "mojahige",
+  "scripts": {
+    "dev": "dev:client & dev:rest & dev:graphql",
+    "dev:client": "yarn workspace @graphql-app-test/client dev",
+    "dev:rest": "yarn workspace @graphql-app-test/rest dev",
+    "dev:graphql": "yarn workspace @graphql-app-test/graphql dev"
+  },
   "workspaces": [
     "apps/*",
     "configs/*"
