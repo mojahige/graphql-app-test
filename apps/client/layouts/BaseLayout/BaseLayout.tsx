@@ -12,7 +12,7 @@ export const BaseLayout: React.FC<Props> = ({ children }) => {
       <Box width="100%">
         <Header />
       </Box>
-      <Box width="100%" flexGrow={1} padding="8">
+      <Box as="main" width="100%" flexGrow={1} padding="8">
         {children}
       </Box>
       <Box width="100%">

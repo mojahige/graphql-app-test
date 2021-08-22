@@ -3,7 +3,13 @@ import { withUrqlClient, initUrqlClient } from 'next-urql';
 import { useUsersQuery, UsersDocument } from '../lib/generated/client';
 import { BASE_URL } from '../client';
 import { BaseLayout } from '../layouts/BaseLayout';
-import { Box, Heading, SimpleGrid, Text, Flex } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  SimpleGrid,
+  VisuallyHidden,
+  Flex,
+} from '@chakra-ui/react';
 import type { NextPage, GetServerSideProps } from 'next';
 import type { Query } from '../lib/generated/client';
 
@@ -39,11 +45,14 @@ export const User: NextPage<Props> = (props) => {
                 {user.name}
               </Heading>
               <Box marginTop={2}>
-                <Flex gridGap="8px">
-                  <Box as="div" aria-label="Email" flexShrink={0}>
-                    📧:
+                <Flex as="p" gridGap="8px">
+                  <Box as="span" flexShrink={0}>
+                    <VisuallyHidden>Email</VisuallyHidden>
+                    📧
                   </Box>
-                  <Text overflowWrap="anywhere">{user.email}</Text>
+                  <Box as="span" overflowWrap="anywhere">
+                    {user.email}
+                  </Box>
                 </Flex>
               </Box>
             </Box>
