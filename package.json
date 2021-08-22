@@ -3,6 +3,9 @@
   "private": true,
   "author": "mojahige",
   "scripts": {
+    "client": "yarn workspace @graphql-app-test/client",
+    "rest": "yarn workspace @graphql-app-test/rest",
+    "graphql": "yarn workspace @graphql-app-test/graphql",
     "dev": "dev:client & dev:rest & dev:graphql",
     "dev:client": "yarn workspace @graphql-app-test/client dev",
     "dev:rest": "yarn workspace @graphql-app-test/rest dev",
