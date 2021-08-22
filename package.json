@@ -3,6 +3,8 @@
   "private": true,
   "author": "mojahige",
   "scripts": {
+    "new:component": "hygen client:component new",
+    "new:page": "hygen client:page new",
     "client": "yarn workspace @graphql-app-test/client",
     "rest": "yarn workspace @graphql-app-test/rest",
     "graphql": "yarn workspace @graphql-app-test/graphql",
@@ -14,5 +16,8 @@
   "workspaces": [
     "apps/*",
     "configs/*"
-  ]
+  ],
+  "devDependencies": {
+    "hygen": "^6.1.0"
+  }
 }
