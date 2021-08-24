@@ -8,16 +8,37 @@ interface UserIDParam {
   id: string;
 }
 
+interface OffSetParam {
+  offset?: string;
+}
+
+interface LimitParam {
+  limit?: string;
+}
+
+type PaginationParam = OffSetParam & LimitParam;
+
 type UpdateUserBody = RequestBody<Partial<Omit<UserModel, 'id'>>>;
 type CreateUserBody = UpdateUserBody;
 
+const convertNumber = (value: unknown) => {
+  const convertedValue = Number(value);
+
+  return isNaN(convertedValue) ? 0 : convertedValue;
+};
+
 export async function user(): Promise<void> {
-  server.get('/user', async (_, reply) => {
+  server.get<{
+    Querystring: PaginationParam;
+  }>('/user', async (request, reply) => {
+    const { offset, limit } = request.query;
     const allUserData = DB.getData('/user') as Users;
+    const offsetNumber = convertNumber(offset);
+    const limitNumber = convertNumber(limit) || DB.getCount('/user');
 
     reply.code(200).send(
       result({
-        data: allUserData,
+        data: allUserData.slice(offsetNumber, limitNumber),
       })
     );
   });
