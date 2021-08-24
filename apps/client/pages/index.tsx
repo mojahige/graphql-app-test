@@ -1,6 +1,6 @@
-import type { NextPage } from 'next';
+// import type { NextPage } from 'next';
+// import Head from 'next/head';
 import Link from 'next/link';
-import Head from 'next/head';
 import {
   Heading,
   Center,
@@ -9,7 +9,7 @@ import {
   ListItem,
 } from '@chakra-ui/react';
 
-const Home: NextPage = () => {
+function Home() {
   return (
     <>
       <Center width="100%" minH="100%">
@@ -24,6 +24,6 @@ const Home: NextPage = () => {
       </Center>
     </>
   );
-};
+}
 
 export default Home;

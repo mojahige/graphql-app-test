@@ -15,9 +15,9 @@ import {
   Flex,
   VStack,
 } from '@chakra-ui/react';
-import type { NextPage, GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 
-const UserCard: React.FC<UserModel> = (props: UserModel) => {
+function UserCard(props: UserModel) {
   return (
     <Box as="section" borderWidth="1px" borderRadius="lg" padding={4}>
       <Heading as="h1" size="md">
@@ -47,9 +47,9 @@ const UserCard: React.FC<UserModel> = (props: UserModel) => {
       </VStack>
     </Box>
   );
-};
+}
 
-export const User: NextPage = () => {
+export function User() {
   const [{ data }] = useUsersQuery();
 
   return (
@@ -72,7 +72,7 @@ export const User: NextPage = () => {
       </SimpleGrid>
     </BaseLayout>
   );
-};
+}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const ssrCache = ssrExchange({ isClient: false });

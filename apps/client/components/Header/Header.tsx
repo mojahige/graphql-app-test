@@ -18,7 +18,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 
-export const Header = () => {
+export function Header() {
   const router = useRouter();
   const drawerContentRef = useRef(null);
   const drawerOpenButtonRef = useRef(null);
@@ -99,4 +99,4 @@ export const Header = () => {
       </Drawer>
     </Box>
   );
-};
+}

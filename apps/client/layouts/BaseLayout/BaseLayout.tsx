@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const BaseLayout: React.FC<Props> = ({ children }) => {
+export function BaseLayout({ children }: Props) {
   return (
     <Flex minH="100%" direction="column">
       <Box width="100%">
@@ -20,4 +20,4 @@ export const BaseLayout: React.FC<Props> = ({ children }) => {
       </Box>
     </Flex>
   );
-};
+}
