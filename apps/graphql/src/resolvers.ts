@@ -14,8 +14,8 @@ interface ContextType {
 }
 
 const Query: QueryResolvers<ContextType> = {
-  users(_parent, _args, { dataSources }, _info) {
-    return dataSources.userAPI.getUsers();
+  users(_parent, { offset, limit }, { dataSources }, _info) {
+    return dataSources.userAPI.getUsers({ offset, limit });
   },
   user(_parent, { id }, { dataSources }, _info) {
     return dataSources.userAPI.getUser(id);
